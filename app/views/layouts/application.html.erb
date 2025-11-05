@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>魔法雑貨屋</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <!-- 🌟 ヘッダーここから -->
+    <header style="background-color: #333; color: white; padding: 10px;">
+      <h1 style="display: inline-block;">🪄 魔法雑貨屋</h1>
+
+      <nav style="float: right;">
+        <% if user_signed_in? %>
+          <%= link_to "マイページ", edit_user_registration_path, style: "color:white; margin-right: 15px;" %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, style: "color:white;" %>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, style: "color:white; margin-right: 15px;" %>
+          <%= link_to "新規登録", new_user_registration_path, style: "color:white;" %>
+        <% end %>
+      </nav>
+
+      <div style="clear: both;"></div>
+    </header>
+    <!-- 🌟 ヘッダーここまで -->
+
+    <%= yield %> <!-- 各ページの中身がここに入る -->
+  </body>
+</html>

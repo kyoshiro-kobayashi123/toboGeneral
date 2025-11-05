@@ -1,0 +1,21 @@
+<h1 style="text-align:center; margin-top:20px;">🪄 魔法雑貨屋 🪄</h1>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px;">
+  <% @products.each do |product| %>
+    <div style="width: 250px; background: #fff; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); padding: 10px; text-align: center;">
+    <% if product.image.attached? %>
+        <%= image_tag url_for(product.image), style: "width:100%; height:180px; object-fit:cover; border-radius:8px;" %>
+    <% else %>
+        <div style="width:100%; height:180px; background:#eee; border-radius:8px; display:flex; align-items:center; justify-content:center;">
+            No Image
+        </div>
+    <% end %>
+
+      <h3 style="margin:10px 0; color:#333;">a<%= product.name %></h3>
+      <p style="font-size:14px; color:#666; height:40px; overflow:hidden;"><%= product.description %></p>
+      <p style="font-weight:bold; color:#4B0082;">¥<%= product.price %></p>
+
+      <%= button_to "カートに入れる", "#", method: :post, style:"background:#4B0082; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;" %>
+    </div>
+  <% end %>
+</div>
